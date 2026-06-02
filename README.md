@@ -10,7 +10,6 @@ A tutorial repo for learning **Information System Development** with agentic AI 
 This course teaches CS undergraduate students how to build software with AI coding agents such as **Claude Code** and **Codex**, while keeping humans in control through specification-driven development.
 
 > This tutorial uses **open-gsd/gsd-core**: https://github.com/open-gsd/gsd-core  
-> It does **not** use Hermes GSD.
 
 Sample project: **Library Management System**.
 
