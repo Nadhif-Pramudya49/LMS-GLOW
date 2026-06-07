@@ -32,7 +32,7 @@ On first run it opens a browser-based OAuth login (or asks for an API key, depen
 claude --version
 ```
 
-You should see a version number like `2.1.159`. If the command isn't found, check that npm's global bin directory is on your `PATH`.
+You should see a version number like `2.1.168`. If the command isn't found, check that npm's global bin directory is on your `PATH`.
 
 ### A quick smoke test
 
