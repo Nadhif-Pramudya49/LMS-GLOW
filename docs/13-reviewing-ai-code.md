@@ -95,4 +95,4 @@ Reviewing AI-generated code is not optional — it is the discipline that makes 
 
 You have now been through the entire cycle: plan, build with Claude or Codex, verify, ship, and review. That is a complete project loop. When you are ready to start something new, head back to the beginning and run it again — each project will go faster and cleaner than the last.
 
-[Back to Module 00 — start your next project](00-introduction.md)
+[Back to Module 00 — start your next project](00-mindset.md)

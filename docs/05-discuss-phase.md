@@ -19,7 +19,7 @@ isd-project/
     └── ...
 ```
 
-If you haven't created your roadmap yet, go back to tutorial [04-roadmap-and-features.md](04-roadmap-and-features.md) and do that first.
+If you haven't created your roadmap yet, go back to tutorial [04-new-project.md](04-new-project.md) and do that first.
 
 ## How It Works
 

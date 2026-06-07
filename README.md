@@ -143,8 +143,8 @@ Recommended for students who want a terminal-based agent workflow with strong pr
 
 See:
 
-- [Module 2: Install Agent CLIs](docs/02-install-agent-clis.md)
-- [Module 10: Build with Claude Code](docs/10-build-with-claude-code.md)
+- [Module 2: Install Agent CLIs](docs/02-install-agent-cli.md)
+- [Module 10: Build with Claude Code](docs/10-build-with-claude.md)
 
 ### Path B: Codex
 
@@ -154,7 +154,7 @@ Recommended for students who want to compare agent behavior, output style, and w
 
 See:
 
-- [Module 2: Install Agent CLIs](docs/02-install-agent-clis.md)
+- [Module 2: Install Agent CLIs](docs/02-install-agent-cli.md)
 - [Module 11: Build with Codex](docs/11-build-with-codex.md)
 
 Both paths use the same principle: **the plan comes before the code**.
@@ -181,7 +181,7 @@ npm --version
 gh --version
 ```
 
-If any command is missing, start with [Module 1: Environment Setup](docs/01-environment-setup.md).
+If any command is missing, start with [Module 1: Environment Setup](docs/01-setup-environment.md).
 
 ### 3. Install or run GSD Core
 
@@ -205,7 +205,7 @@ See [Module 4: New Project](docs/04-new-project.md).
 
 Choose one:
 
-- Claude Code path: continue to [Module 10](docs/10-build-with-claude-code.md).
+- Claude Code path: continue to [Module 10](docs/10-build-with-claude.md).
 - Codex path: continue to [Module 11](docs/11-build-with-codex.md).
 
 Do not implement features until you have completed the relevant discussion and planning modules.
@@ -217,10 +217,10 @@ Do not implement features until you have completed the relevant discussion and p
 - [Module 0: Mindset](docs/00-mindset.md)  
   Why spec-first matters; what agentic AI is and is not.
 
-- [Module 1: Environment Setup](docs/01-environment-setup.md)  
+- [Module 1: Environment Setup](docs/01-setup-environment.md)  
   Install and verify git, Node.js, npm, and GitHub CLI.
 
-- [Module 2: Install Agent CLIs](docs/02-install-agent-clis.md)  
+- [Module 2: Install Agent CLIs](docs/02-install-agent-cli.md)  
   Install and authenticate Claude Code and Codex.
 
 - [Module 3: Install GSD Core](docs/03-install-gsd-core.md)  
@@ -244,7 +244,7 @@ Do not implement features until you have completed the relevant discussion and p
 - [Module 9: Worktree Teamwork](docs/09-worktree-teamwork.md)  
   Use git worktrees for parallel team development.
 
-- [Module 10: Build with Claude Code](docs/10-build-with-claude-code.md)  
+- [Module 10: Build with Claude Code](docs/10-build-with-claude.md)  
   Use `/gsd-execute-phase` with Claude Code.
 
 - [Module 11: Build with Codex](docs/11-build-with-codex.md)  
@@ -265,8 +265,8 @@ isd-project/
 ├── README.md
 ├── docs/
 │   ├── 00-mindset.md
-│   ├── 01-environment-setup.md
-│   ├── 02-install-agent-clis.md
+│   ├── 01-setup-environment.md
+│   ├── 02-install-agent-cli.md
 │   ├── 03-install-gsd-core.md
 │   ├── 04-new-project.md
 │   ├── 05-discuss-phase.md
@@ -274,7 +274,7 @@ isd-project/
 │   ├── 07-tech-stack.md
 │   ├── 08-github-workflow.md
 │   ├── 09-worktree-teamwork.md
-│   ├── 10-build-with-claude-code.md
+│   ├── 10-build-with-claude.md
 │   ├── 11-build-with-codex.md
 │   ├── 12-verify-and-ship.md
 │   └── 13-reviewing-ai-code.md
@@ -341,7 +341,7 @@ Recommended baseline:
 - Node.js and npm.
 - Access to Claude Code and/or Codex, depending on the selected path.
 
-Detailed setup is covered in [Module 1](docs/01-environment-setup.md) and [Module 2](docs/02-install-agent-clis.md).
+Detailed setup is covered in [Module 1](docs/01-setup-environment.md) and [Module 2](docs/02-install-agent-cli.md).
 
 ---
 
