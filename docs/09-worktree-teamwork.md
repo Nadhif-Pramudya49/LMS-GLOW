@@ -174,7 +174,7 @@ cd ~/projects/library-system-cici/borrow
 python3 -m venv .venv
 source .venv/bin/activate
 
-# She may need to pull dari branch lain
+# She may need to pull from the main branch
 git fetch origin
 git merge origin/feature/phase-02-auth  # merge auth changes
 

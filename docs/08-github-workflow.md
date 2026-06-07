@@ -19,14 +19,15 @@ Go to github.com, click the green "New" button, and create a new repository. Don
 Install the GitHub CLI (`gh`) if you haven't already:
 
 ```bash
-# Ubuntu/Debian
-sudo apt install gh
+# Ubuntu/Debian (add GitHub's official package repo first)
+type -p curl >/dev/null || sudo apt install curl -y
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
+  && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
+  && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+  && sudo apt update && sudo apt install gh -y
 
 # macOS
 brew install gh
-
-# Windows (WSL)
-sudo apt install gh
 ```
 
 Authenticate:
@@ -126,7 +127,7 @@ Users can create, read, update, and delete books in the catalog.
 - Public listing page"
 ```
 
-**F-IDs map directly to GitHub issue numbers.** If F-001 becomes issue #3, any future reference to F-001 should note the issue number. The agent can track this.
+**F-IDs should be recorded alongside their GitHub issue numbers.** If F-001 becomes issue #3, note that mapping (e.g., in a comment in ROADMAP.md or the issue body). The agent can track this.
 
 ### Automating Issue Creation
 
@@ -275,8 +276,9 @@ gh pr create \
   --body "Closes #3, #4" \
   --label "phase-1"
 
-# 10. Review and merge
-gh pr review 5 --approve
+# 10. Review (ask a teammate or reviewer to approve), then merge
+# A team member reviews and approves via GitHub UI or:
+#   gh pr review 5 --approve  (only valid if reviewing SOMEONE ELSE's PR)
 gh pr merge 5 --merge --delete-branch
 
 # 11. Sync main

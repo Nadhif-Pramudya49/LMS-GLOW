@@ -52,7 +52,7 @@ Here are the most common stacks for student projects.
 Frontend: React + TypeScript + Vite
 Backend:  FastAPI (Python)
 Database: PostgreSQL or SQLite
-ORM:      SQLAlchemy or Prisma (via FastAPI)
+ORM:      SQLAlchemy or SQLModel
 Deploy:   Render (free tier), Railway, or Vercel + Render
 ```
 
