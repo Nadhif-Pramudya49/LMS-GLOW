@@ -133,7 +133,7 @@ Because each subagent starts fresh, it never suffers from context rot. It never 
 
 This is the magic that *actually* makes AI development reliable. Not bigger models. Not cleverer prompts. **Structure.** Specs that persist, plans that guide, and fresh agents that never rot.
 
-## Putting It All Together
+## Summary
 
 Let's summarize the mindset you're carrying into the rest of this tutorial:
 
@@ -144,6 +144,10 @@ Let's summarize the mindset you're carrying into the rest of this tutorial:
 5. **Beware context rot.** Long conversations degrade AI quality.
 6. **Let structure save you.** GSD uses fresh subagents and persistent files so quality never rots.
 
+The mindset is simple: **the spec is the truth, the code is just an implementation detail.** If the spec is wrong, the code will be wrong. If the spec is right, the agent can build it.
+
 If this feels like more discipline than just "chatting with an AI," that's because it *is.* But it's the difference between a hobbyist who occasionally gets lucky and a professional who reliably ships working systems. By the end of this course, this discipline will feel natural — and you'll never want to "just build it" again.
 
-In the next chapter, we'll get our hands dirty and set up the development environment you'll need. Let's go.
+In the next chapter, we'll get our hands dirty and set up the development environment you'll need.
+
+➡️ Continue to [01 — Setting Up Your Environment](01-setup-environment.md)

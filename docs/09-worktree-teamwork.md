@@ -428,3 +428,5 @@ git worktree add -b budi/phase-05-notifications ~/projects/library/worktrees/bud
 **Key takeaway**: Git worktrees let your team work in parallel without stepping on each other's toes, while keeping everyone on the same Git repository. Each person gets their own directory, their own branch, and their own agent session — all sharing the same source of truth.
 
 **Next**: With your workflow set up, you're ready to start executing phases. Remember the cycle: **Discuss → Plan → Execute → Review → Merge**. Repeat for each phase until your project is complete.
+
+➡️ Continue to [10 — Building with Claude Code](10-build-with-claude.md)
