@@ -122,8 +122,10 @@ To follow the whole tutorial you'll want:
 
 You don't need both agent accounts; pick the path you have access to. The tutorial covers both side by side.
 
+**Expected costs:** Claude Code and Codex are paid tools or consume paid API/usage credits depending on your plan. Check Anthropic/OpenAI pricing before long sessions, set budgets where available, and monitor usage while you learn.
+
 ## 1.8 What's next
 
-With your environment verified, you'll install the two AI agent CLIs — Claude Code and Codex.
+With your environment verified, you'll install an AI agent CLI — Claude Code or Codex.
 
 ➡️ Continue to [02 — Installing AI Agent CLIs](02-install-agent-cli.md)

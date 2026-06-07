@@ -42,6 +42,7 @@ You repeat this loop until verification comes back clean — no gaps, every requ
 Do not get discouraged if the first verify finds several issues. That is the system working as intended. The point of the loop is to catch those problems *now*, in a controlled way, instead of letting them hide in your codebase.
 
 ![GSD verify and ship](../assets/screenshots/09-verify-ship.png)
+*Illustrative example — your verify/ship output will differ based on the phase, any gaps found, and your GitHub setup.*
 
 ## `/gsd-ship` — package up and open the PR
 

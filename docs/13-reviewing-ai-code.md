@@ -1,6 +1,7 @@
 # 13 — Reviewing AI-Generated Code
 
 ![PR AI review](../assets/screenshots/10-pr-review.png)
+*Illustrative example — an agent's review pass against a PR. Your output will differ based on the diff and the issues found.*
 
 Here is the rule that underlies this entire module, and you should tattoo it on your brain:
 

@@ -28,16 +28,16 @@ Each person works on their own machine or container. This works but adds overhea
 
 ### The Best Answer: Git Worktrees
 
-**Git worktrees** let you have multiple working directories from a single local repository, each on a different branch. Think of it as `git checkout` without the "lose your current state" part — you can have the `auth` branch checked out in `~/projects/library/auth-worktree/` and the `catalog` branch checked out in `~/projects/library/catalog-worktree/` simultaneously.
+**Git worktrees** let you have multiple working directories from a single local repository, each on a different branch. Think of it as `git checkout` without the "lose your current state" part — you can have the `auth` branch checked out in `~/projects/library-system/worktrees/auth/` and the `catalog` branch checked out in `~/projects/library-system/worktrees/catalog/` simultaneously.
 
 ```
-            ┌── /projects/library/main/           (main branch)
+            ┌── ~/projects/library-system/main/           (main branch)
             │
-repo.git ───┼── /projects/library/worktrees/auth/   (feature/phase-02-auth)
+repo.git ───┼── ~/projects/library-system/worktrees/auth/   (feature/phase-02-auth)
             │
-            ├── /projects/library/worktrees/catalog/ (feature/phase-01-catalog)
+            ├── ~/projects/library-system/worktrees/catalog/ (feature/phase-01-catalog)
             │
-            └── /projects/library/worktrees/borrow/  (feature/phase-03-borrowing)
+            └── ~/projects/library-system/worktrees/borrow/  (feature/phase-03-borrowing)
 ```
 
 Each worktree is a complete working copy. Each has its own `node_modules/`, its own `.venv/`, its own files. But they all share the same `.git/` directory — so commits from any worktree are instantly available to all others.
@@ -51,13 +51,13 @@ Each worktree is a complete working copy. Each has its own `node_modules/`, its 
 cd ~/projects/library-system
 
 # Create a worktree for the auth feature
-git worktree add ~/projects/library-system-worktrees/auth feature/phase-02-auth
+git worktree add ~/projects/library-system/worktrees/auth feature/phase-02-auth
 
 # Create a worktree for the catalog feature
-git worktree add ~/projects/library-system-worktrees/catalog feature/phase-01-catalog
+git worktree add ~/projects/library-system/worktrees/catalog feature/phase-01-catalog
 
 # Create a worktree for a new branch (NOT yet existing)
-git worktree add -b feature/phase-03-borrowing ~/projects/library-system-worktrees/borrow
+git worktree add -b feature/phase-03-borrowing ~/projects/library-system/worktrees/borrow
 ```
 
 After these commands, you have three new directories, each with the corresponding branch checked out.
@@ -71,10 +71,10 @@ git worktree list
 Output:
 
 ```
-/home/user/projects/library-system                  main
-/home/user/projects/library-system-worktrees/auth    feature/phase-02-auth
-/home/user/projects/library-system-worktrees/catalog feature/phase-01-catalog
-/home/user/projects/library-system-worktrees/borrow  feature/phase-03-borrowing
+/home/user/projects/library-system/main              main
+/home/user/projects/library-system/worktrees/auth    feature/phase-02-auth
+/home/user/projects/library-system/worktrees/catalog feature/phase-01-catalog
+/home/user/projects/library-system/worktrees/borrow  feature/phase-03-borrowing
 ```
 
 ### Removing a Worktree
@@ -83,10 +83,10 @@ When Anda finishes Phase 2 and merges it to main, she removes her worktree:
 
 ```bash
 # From anywhere
-git worktree remove ~/projects/library-system-worktrees/auth
+git worktree remove ~/projects/library-system/worktrees/auth
 
 # Or from within the worktree directory
-cd ~/projects/library-system-worktrees/auth
+cd ~/projects/library-system/worktrees/auth
 git worktree remove .
 ```
 
@@ -113,13 +113,13 @@ git clone https://github.com/your-team/library-system.git ~/projects/library-sys
 cd ~/projects/library-system/main
 
 # Anda's worktree
-git worktree add -b feature/phase-02-auth ~/projects/library-system-and/auth
+git worktree add -b feature/phase-02-auth ~/projects/library-system/worktrees/anda
 
 # Budi's worktree
-git worktree add ~/projects/library-system-budi/catalog feature/phase-01-catalog
+git worktree add ~/projects/library-system/worktrees/budi feature/phase-01-catalog
 
 # Cici's worktree
-git worktree add -b feature/phase-03-borrowing ~/projects/library-system-cici/borrow
+git worktree add -b feature/phase-03-borrowing ~/projects/library-system/worktrees/cici
 ```
 
 ### Each Person's Workflow
@@ -130,7 +130,7 @@ Each team member works in their own worktree directory. They each run their own 
 
 ```bash
 # In her worktree
-cd ~/projects/library-system-and/auth
+cd ~/projects/library-system/worktrees/anda
 
 # Activate her own virtual environment
 python3 -m venv .venv
@@ -154,7 +154,7 @@ git push -u origin feature/phase-02-auth
 
 ```bash
 # In his worktree
-cd ~/projects/library-system-budi/catalog
+cd ~/projects/library-system/worktrees/budi
 
 # His own environment
 python3 -m venv .venv
@@ -169,7 +169,7 @@ git push -u origin feature/phase-01-catalog
 **Cici (borrowing phase):**
 
 ```bash
-cd ~/projects/library-system-cici/borrow
+cd ~/projects/library-system/worktrees/cici
 
 python3 -m venv .venv
 source .venv/bin/activate
@@ -185,6 +185,8 @@ git commit -m "feat: implement book borrowing flow"
 ### Merging When Ready
 
 When a phase is complete and reviewed:
+
+> **PR gate:** The local merge commands below are for solo projects ONLY. Teams MUST route all merges through PRs, getting human review/approval and letting CI run before merging to `main`. Local merges bypass these protections and risk breaking the build.
 
 ```bash
 # From the main repo
@@ -204,11 +206,11 @@ git branch -d feature/phase-01-catalog
 git branch -d feature/phase-02-auth
 
 # Remove worktrees
-git worktree remove ~/projects/library-system-budi/catalog
-git worktree remove ~/projects/library-system-and/auth
+git worktree remove ~/projects/library-system/worktrees/budi
+git worktree remove ~/projects/library-system/worktrees/anda
 
 # Sync remaining worktrees
-cd ~/projects/library-system-cici/borrow
+cd ~/projects/library-system/worktrees/cici
 git pull origin main
 ```
 
@@ -275,7 +277,7 @@ For student teams building a single project, git worktrees offer the best balanc
 Pick a convention and stick with it:
 
 ```
-/mnt/c/Users/YourName/projects/library-system/
+~/projects/library-system/
 ├── main/          # The main repo (main branch)
 └── worktrees/
     ├── anda/      # Anda's worktree
@@ -283,21 +285,13 @@ Pick a convention and stick with it:
     └── cici/      # Cici's worktree
 ```
 
-Or, if you want each person's worktree in their own user directory:
-
-```
-/home/anda/projects/library-system/
-/home/budi/projects/library-system/
-/home/cici/projects/library-system/
-```
-
-The location doesn't matter as long as everyone knows where things are.
+Keep all worktrees under `~/projects/library-system/worktrees/` so scripts, docs, and onboarding stay aligned.
 
 ### Tip 2: Prefix Branches with Person Name
 
 ```bash
-git worktree add -b anda/phase-02-auth /home/anda/projects/library-system
-git worktree add -b budi/phase-01-catalog /home/budi/projects/library-system
+git worktree add -b anda/phase-02-auth ~/projects/library-system/worktrees/anda
+git worktree add -b budi/phase-01-catalog ~/projects/library-system/worktrees/budi
 ```
 
 This makes it clear who owns which branch.
@@ -342,6 +336,8 @@ DATABASE_URL=postgresql://localhost:5432/library_dev
 
 When Anda runs migrations, the schema changes are visible to Budi's worktree too. This is usually fine — just communicate before running destructive migrations.
 
+> **Schema collision risk:** A shared dev DB can break other worktrees when one branch adds/removes tables or runs migrations. Prefer per-worktree SQLite files for local development (e.g. `DATABASE_URL=sqlite:///./dev.db` inside each worktree), then test shared Postgres only before PR/merge.
+
 ## Screenshots
 
 ![Git worktrees](../assets/screenshots/06-worktrees.png)
@@ -354,13 +350,13 @@ Here's the full lifecycle of a team using worktrees for one sprint:
 # ── DAY 1: Setup ──────────────────────────────────────
 
 # Team lead clones the repo
-git clone https://github.com/team/library.git ~/projects/library/main
-cd ~/projects/library/main
+git clone https://github.com/team/library.git ~/projects/library-system/main
+cd ~/projects/library-system/main
 
 # Creates worktrees for each team member
-git worktree add -b anda/phase-02-auth ~/projects/library/worktrees/anda
-git worktree add -b budi/phase-01-catalog ~/projects/library/worktrees/budi
-git worktree add -b cici/phase-03-borrowing ~/projects/library/worktrees/cici
+git worktree add -b anda/phase-02-auth ~/projects/library-system/worktrees/anda
+git worktree add -b budi/phase-01-catalog ~/projects/library-system/worktrees/budi
+git worktree add -b cici/phase-03-borrowing ~/projects/library-system/worktrees/cici
 
 # Push new branches to GitHub
 git push -u origin anda/phase-02-auth
@@ -370,21 +366,21 @@ git push -u origin cici/phase-03-borrowing
 # ── DAY 1-5: Parallel Work ────────────────────────────
 
 # Anda works on auth (in her worktree)
-cd ~/projects/library/worktrees/anda
+cd ~/projects/library-system/worktrees/anda
 # Runs /gsd-discuss-phase 2, /gsd-plan-phase 2
 # Agent creates auth models, views, templates
 git add -A && git commit -m "feat: add User model and registration"
 git push
 
 # Budi works on catalog (in his worktree)
-cd ~/projects/library/worktrees/budi
+cd ~/projects/library-system/worktrees/budi
 # Runs /gsd-discuss-phase 1, /gsd-plan-phase 1
 # Agent creates book models and CRUD
 git add -A && git commit -m "feat: book Catalog CRUD"
 git push
 
 # Cici works on borrowing (in her worktree)
-cd ~/projects/library/worktrees/cici
+cd ~/projects/library-system/worktrees/cici
 # Runs /gsd-discuss-phase 3, /gsd-plan-phase 3
 # Creates borrowing models
 git add -A && git commit -m "feat: Loan model and schema"
@@ -398,21 +394,21 @@ git push
 gh pr review <pr-number> --approve
 gh pr merge <pr-number> --merge
 
-# Or merge locally
-cd ~/projects/library/main
+# Or merge locally (SOLO ONLY — teams must use the PR flow above)
+cd ~/projects/library-system/main
 git merge anda/phase-02-auth
 git merge budi/phase-01-catalog
 git push origin main
 
 # Clean up old worktrees
-git worktree remove ~/projects/library/worktrees/anda
+git worktree remove ~/projects/library-system/worktrees/anda
 git branch -d anda/phase-02-auth
 
 # ── DAY 7: Next Sprint ───────────────────────────────
 
 # Create new worktrees for Phase 4 and 5
-git worktree add -b anda/phase-04-reports ~/projects/library/worktrees/anda
-git worktree add -b budi/phase-05-notifications ~/projects/library/worktrees/budi
+git worktree add -b anda/phase-04-reports ~/projects/library-system/worktrees/anda
+git worktree add -b budi/phase-05-notifications ~/projects/library-system/worktrees/budi
 ```
 
 ## Summary

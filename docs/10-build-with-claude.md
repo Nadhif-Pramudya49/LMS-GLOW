@@ -49,6 +49,7 @@ That is it. The agent now has everything it needs: it knows where your planning 
 A common beginner mistake is launching Claude Code from the wrong directory. If you start it from your home folder or a subfolder, it may not find your planning documents. Always start from the project root.
 
 ![Claude Code executing Phase 1](../assets/screenshots/07-claude-execute.png)
+*Illustrative example — your terminal output will look similar but will differ based on your project and system.*
 
 ## What Claude Code actually does during execution
 

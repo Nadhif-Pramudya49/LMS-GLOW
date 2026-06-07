@@ -77,6 +77,8 @@ The agent generates a complete context document without asking you any questions
 
 Use this for well-understood features where you don't need deep discussion, or when you want to get a first draft you can later edit.
 
+> **Review required:** `--auto` output is only a draft. A human MUST read, correct, and approve the generated context before running `/gsd-plan-phase` — otherwise the plan can lock in bad assumptions the agent silently invented.
+
 ### Batch Mode
 
 ```

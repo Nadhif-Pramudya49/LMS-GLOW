@@ -48,6 +48,7 @@ $gsd-execute-phase 1
 Codex now reads `PLAN.md`, works out the wave dependencies, and begins building. You will see the same kind of output you saw with Claude: files being created, tests running, commits landing.
 
 ![Codex executing Phase 1](../assets/screenshots/08-codex-execute.png)
+*Illustrative example — your terminal output will look similar but will differ based on your project, model, and system.*
 
 ## Choosing a Codex model
 
