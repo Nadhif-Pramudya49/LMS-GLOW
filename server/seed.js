@@ -12,20 +12,20 @@ async function seed() {
 
         // Insert Admin
         await db.execute(
-            'INSERT IGNORE INTO users (username, password, name, role) VALUES (?, ?, ?, ?)',
-            ['admin', adminPass, 'System Admin', 'ADMIN']
+            'INSERT INTO users (username, password, name, role) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE password = ?, name = ?, role = ?',
+            ['admin', adminPass, 'System Admin', 'ADMIN', adminPass, 'System Admin', 'ADMIN']
         );
 
         // Insert Librarian
         await db.execute(
-            'INSERT IGNORE INTO users (username, password, name, role) VALUES (?, ?, ?, ?)',
-            ['pustakawan', librarianPass, 'Andi Pustakawan', 'LIBRARIAN']
+            'INSERT INTO users (username, password, name, role) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE password = ?, name = ?, role = ?',
+            ['pustakawan', librarianPass, 'Andi Pustakawan', 'LIBRARIAN', librarianPass, 'Andi Pustakawan', 'LIBRARIAN']
         );
 
         // Insert Member
         await db.execute(
-            'INSERT IGNORE INTO users (username, password, name, role) VALUES (?, ?, ?, ?)',
-            ['anggota', memberPass, 'Budi Anggota', 'MEMBER']
+            'INSERT INTO users (username, password, name, role) VALUES (?, ?, ?, ?) ON DUPLICATE KEY UPDATE password = ?, name = ?, role = ?',
+            ['anggota', memberPass, 'Budi Anggota', 'MEMBER', memberPass, 'Budi Anggota', 'MEMBER']
         );
 
         console.log('Seeding completed successfully.');

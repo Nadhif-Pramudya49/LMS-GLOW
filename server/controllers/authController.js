@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 
 exports.login = async (req, res) => {
     const { username, password } = req.body;
+    console.log(`Login attempt for username: ${username}`);
 
     try {
         if (!username || !password) {
@@ -14,6 +15,7 @@ exports.login = async (req, res) => {
         const [users] = await db.execute('SELECT * FROM users WHERE username = ?', [username]);
         
         if (users.length === 0) {
+            console.log(`User not found: ${username}`);
             return res.status(401).json({ message: 'Invalid credentials' });
         }
 
@@ -22,10 +24,12 @@ exports.login = async (req, res) => {
         // Verify password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
+            console.log(`Password mismatch for user: ${username}`);
             return res.status(401).json({ message: 'Invalid credentials' });
         }
 
         // Generate JWT
+        console.log(`Login successful for user: ${username}, generating token...`);
         const token = jwt.sign(
             { id: user.id, role: user.role, username: user.username },
             process.env.JWT_SECRET,
